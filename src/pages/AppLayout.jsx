@@ -5,7 +5,6 @@ import Map from "../components/Map";
 const AppLayout = () => {
   return (
     <div className={styles.app}>
-      {/* <AppNav /> */}
       <Sidebar />
       <Map />
     </div>
