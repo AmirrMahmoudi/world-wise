@@ -3,12 +3,16 @@
   max-height: 70%;
   background-color: var(--color-dark--2);
   border-radius: 7px;
-  overflow: scroll;
-
+  overflow-y: scroll;
+  scrollbar-width: none; /* For Firefox */
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.city::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari and Opera */
 }
 
 .row {
