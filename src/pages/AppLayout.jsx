@@ -5,6 +5,7 @@ import User from "../components/User";
 
 const AppLayout = () => {
   return (
+    
     <div className={styles.app}>
       <Sidebar />
       <Map />
