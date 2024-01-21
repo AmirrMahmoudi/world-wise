@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
 
 const BASE_URL = "http://localhost:9000";
 
@@ -24,11 +30,7 @@ function reducer(state, action) {
       };
 
     case "city/loaded":
-      return {
-        ...state,
-        isLoading: false,
-        currentCity: action.payload,
-      };
+      return { ...state, isLoading: false, currentCity: action.payload };
 
     case "city/created":
       return {
@@ -44,6 +46,7 @@ function reducer(state, action) {
         cities: state.cities.filter((city) => city.id !== action.payload),
         currentCity: {},
       };
+
     case "rejected":
       return {
         ...state,
@@ -51,7 +54,7 @@ function reducer(state, action) {
         error: action.payload,
       };
     default:
-      throw new Error("Unkown action type");
+      throw new Error("Unknown action type");
   }
 }
 
@@ -78,23 +81,25 @@ const CitiesProvider = ({ children }) => {
     fetchCities();
   }, []);
 
-  async function getCity(id) {
-    if (Number(id) === currentCity.id) return;
+  const getCity = useCallback(
+    async function getCity(id) {
+      if (Number(id) === currentCity.id) return;
 
-    dispatch({ type: "loading" });
+      dispatch({ type: "loading" });
 
-    try {
-      const res = await fetch(`${BASE_URL}/cities/${id}`);
-      const data = await res.json();
-      dispatch({ type: "ciy/loaded", payload: data });
-    } catch {
-      dispatch({
-        type: "rejected",
-        payload: "There was an error loading city...",
-      });
-    }
-  }
-
+      try {
+        const res = await fetch(`${BASE_URL}/cities/${id}`);
+        const data = await res.json();
+        dispatch({ type: "city/loaded", payload: data });
+      } catch {
+        dispatch({
+          type: "rejected",
+          payload: "There was an error loading the city...",
+        });
+      }
+    },
+    [currentCity.id]
+  );
   async function createCity(newCity) {
     dispatch({ type: "loading" });
 
