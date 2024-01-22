@@ -38,15 +38,12 @@ Align your code with the project standards.
 Commit your changes with sufficient explanations.
 
 Support 🆘
-
 If you have a question or problem, please create a new issue and we will address it as soon as possible.
 
 Authors ✍️
-
 Amirhossein Mahmoudi
 
 Acknowledgements 🙏
-
 Special thanks to everyone who has contributed to the development of this project.
 
 This is just a sample and you can adjust it according to the specific needs of your project. Make sure it covers all the relevant information about your project and is up-to-date.
