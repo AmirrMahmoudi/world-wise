@@ -42,9 +42,6 @@ If you have a question or problem, please create a new issue and we will address
 Authors ✍️
 Amirhossein Mahmoudi
 
-License 📄
-This project is published under the MIT license. You can see more details in the LICENSE file.
-
 Acknowledgements 🙏
 Special thanks to everyone who has contributed to the development of this project.
 
